@@ -12,6 +12,7 @@ public class friday {
 	static Scanner in;
 	static PrintWriter out;
 	static int [] fridays;
+	static int n;
 	
 	public static void main(String [] args) {
 		
@@ -30,7 +31,7 @@ public class friday {
 	
 	private static String solve () {
 		int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-		int n = in.nextInt();
+		n = in.nextInt();
 		int day = 1;
 		for (int k =1900 ; k < 1900+n; k++) {
 			for (int j = 0; j < 12; j++) {
