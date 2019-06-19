@@ -1,3 +1,4 @@
+
 /*
 ID:hmoon191
 LANG:JAVA
@@ -9,7 +10,7 @@ package section1_3;
 import java.io.*;
 import java.util.*;
 
-public class milk2 {
+public class milk2_version2 {
 	
 	static Scanner in;
 	static PrintWriter out;
