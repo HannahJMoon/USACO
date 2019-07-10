@@ -52,6 +52,7 @@ public class meeting {
 		TreeSet[] distances = new TreeSet[n];
 		for (int i=0; i<n; i++) distances[i] = new TreeSet<Integer>();
 		distances[n-1].add(0);
+		
 		for (int i=n-2; i>=0; i--) {
 			for (int j=i+1; j<n; j++) {
 				if (graph[i][j] != ans) {
@@ -61,6 +62,7 @@ public class meeting {
 				}
 			}
 		}
+		
 		return (TreeSet<Integer>) distances[0];
 		
 	}

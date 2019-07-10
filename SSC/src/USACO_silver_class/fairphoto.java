@@ -6,14 +6,14 @@ public class fairphoto {
 	
 	static Scanner in = new Scanner (System.in);
 	static int N = in.nextInt();
-	static Cows [] list  = new Cows [N];
+//	static Cows [] list  = new Cows [N];
 	
 	public static void main(String[] args) {
 		
 		for (int i = 0; i < N; i++) {
 			int position = in.nextInt();
 			String type = in.next();
-			list [i] = new Cows (position, type);
+//			list [i] = new Cows (position, type);
 		}
 		
 		for (int i = 0; i < N; i++) {
@@ -23,7 +23,7 @@ public class fairphoto {
 	}
 
 }
-
+/*
 class Cows implements Comparable <Cows>{
 	private int position;
 	private String type;
@@ -45,5 +45,5 @@ class Cows implements Comparable <Cows>{
 }
 
 
-
+*/
 
