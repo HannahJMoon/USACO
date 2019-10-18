@@ -1,4 +1,3 @@
-package ExamJava_01;
 
 import java.util.*;
 import java.io.*;
@@ -11,31 +10,31 @@ public class catchcow {
 		
 		int farmer = in.nextInt();
 		int cow = in.nextInt();
-		int minutes =0;
-		if (farmer > cow) {
-			for (int i = farmer; i < cow; i--) {
+		int minutes = 0;
+		if (cow == farmer) minutes = 0;
+		else if (cow == farmer -1 || farmer == cow -1) minutes = 1;
+		else if (farmer > cow) {
+			for (int i = farmer; i > cow; i--) {
 				minutes++;
 			}
 		}
 		else {
-			while (cow > 0){
-				int f = farmer;
-				int c = cow;
+			int dif = cow - farmer;
+			while (dif >= 0){
 				if (cow - farmer * 2 <= cow - farmer) {
 					minutes++;
-					for (int i = farmer*2; i < cow; i--) {
+					for (int i = farmer*2; i > cow; i--) {
 						minutes++;
 					}
-					cow = cow - farmer * 2;
+					dif = dif - farmer * 2;
 				}
 				else {
-					for (int i = farmer; i > cow; i++) {
+					for (int i = farmer; i < cow; i++) {
 						minutes++;
-						cow --;
 					}
-					
 				}
 			}
+			minutes = minutes + 2;
 		}
 		System.out.println(minutes);
 	}

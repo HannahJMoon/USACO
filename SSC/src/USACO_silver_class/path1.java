@@ -35,6 +35,7 @@ public class path1 {
 		if ((column != N-1) && map [row][column+1] != 1) {
 			dfs (row, column+1);
 		}
+		
 	}
 
 }

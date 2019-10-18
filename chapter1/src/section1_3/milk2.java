@@ -1,21 +1,23 @@
-
 /*
 ID:hmoon191
 LANG:JAVA
 TASK:milk2
  */
 
-
 package section1_3;
-import java.util.*;
+
 import java.io.*;
+import java.util.*;
+
 public class milk2 {
 	
 	static Scanner in;
 	static PrintWriter out;
 	static int n;
-	static Pair a[];
-
+	static int gap;
+	static int milking;
+	static Set <Integer> set;
+	
 	public static void main(String[] args) {
 		
 		try {
@@ -33,56 +35,44 @@ public class milk2 {
 	}
 	
 	public static void init () {
+		
 		n = in.nextInt();
-		a = new Pair [n];
+		set = new HashSet <Integer>();
 		for (int i = 0; i < n; i++) {
-			a [i] = new Pair (in.nextInt(), in.nextInt());
+			int start = in.nextInt();
+			int end = in.nextInt();
+			for (int a = start; a < end; a++) {
+				set.add(a);
+			}
 		}
-		Arrays.sort(a);
+		
 	}
 	
 	public static String solve () {
-		int start = a[0].s;
-		int end = a[0].e;
-		int gap = 0;
-		int milking = 0;
-		for (int i = 1; i < n; i++) {
-			int nextS = a[i].s;
-			int nextE = a[i].e;
-			if (nextS <= end) {
-				if (end <= nextE) {
-					end = nextE;
-				}
+		
+		ArrayList <Integer> a = new ArrayList<Integer>();
+		a.addAll(set);
+		int c = a.get(0);
+		int maxMilking = 0;
+		int maxGap = 0;
+		milking = 0;
+		gap = 0;
+		for (int next: a) {
+			
+			if (next-c <= 1) {
+				milking++;
+				gap = 0;
 			}
 			else {
-				gap = Math.max(gap, nextS-end);
-				milking = Math.max(milking, end-start);
-				start = nextS;
-				end = nextE;
+				gap = next-c-1;
+				milking = 0;
 			}
+			c = next;
+			maxGap = Math.max(gap, maxGap);
+			maxMilking = Math.max(maxMilking, milking);
 		}
-		milking = Math.max(milking, end-start);
-		return milking + " " + gap;
+		return maxMilking + " " + maxGap;
+		
 	}
 
-}
-
-class Pair implements Comparable <Pair>{
-	int s;
-	int e;
-	Pair (int x, int y) {
-		s = x;
-		e = y;
-	}
-
-	@Override
-	public int compareTo(Pair that) {
-		if (this.s > that.s) return 1;
-		else return -1;
-	}
-	
-	public String toString () {
-		return s + " " + e;
-	}
-	
 }

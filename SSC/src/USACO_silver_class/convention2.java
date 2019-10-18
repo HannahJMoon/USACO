@@ -10,17 +10,17 @@ public class convention2 {
 
 	public static void main(String[] args) {
 		
-		PriorityQueue<Cows> pq = new PriorityQueue<Cows>();
-		Cows [] c = new Cows [N];
+		PriorityQueue<bleh> pq = new PriorityQueue<bleh>();
+		bleh [] c = new bleh [N];
 		timeCompare tc = new timeCompare();
 		for(int i = 0; i < N; i++) {
 			int ind = i;
 			int timeS = in.nextInt();
 			int duration = in.nextInt();
-			c[i] = new Cows(ind, timeS, duration);
+			c[i] = new bleh(ind, timeS, duration);
 		}
 		Arrays.sort(c, tc);
-		Cows active = c[0];
+		bleh active = c[0];
 		int nr = 1;
 		int ans = 0;
 		int fin = active.getTimeS() + active.getDuration();
@@ -34,7 +34,7 @@ public class convention2 {
 				nr++;
 			}
 			else if (pq.size() > 0) {
-				Cows t = pq.remove();
+				bleh t = pq.remove();
 				ans = Math.max (ans, fin - t.getTimeS());
 				fin = fin + t.getDuration();
 			}
@@ -44,17 +44,17 @@ public class convention2 {
 	}
 
 }
-class Cows implements Comparable <Cows>{
+class bleh implements Comparable <bleh>{
 	
 	private int ind;
 	private int timeS;
 	private int duration;
 	
-	public int compareTo (Cows c) {
+	public int compareTo (bleh c) {
 		return this.ind - c.ind;
 	}
 	
-	public Cows (int i, int t, int d) {
+	public bleh (int i, int t, int d) {
 		this.ind = i;
 		this.timeS = t;
 		this.duration = d;
@@ -65,8 +65,8 @@ class Cows implements Comparable <Cows>{
 	public int getDuration () {return duration; }
 }
 
-class timeCompare implements Comparator <Cows> {
-	public int compare (Cows a, Cows b) {
+class timeCompare implements Comparator <bleh> {
+	public int compare (bleh a, bleh b) {
 		if (a.getTimeS() == b.getTimeS()) return a.getInd() - b.getInd();
 		else return a.getTimeS() - b.getTimeS();
 	}
